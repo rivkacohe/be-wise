@@ -6,6 +6,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.get('/lecturers', lm.getLecturers);
+router.get('/courses', lm.getCourses);
+router.get('/courses/filter', lm.getCoursesByCategories);
+router.get('/categories', lm.getCategories);
+
+
 
 module.exports = router;
 

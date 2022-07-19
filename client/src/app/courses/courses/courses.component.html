@@ -1,0 +1,73 @@
+<div  class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 col-sm-10 d-flex justify-content-between">
+            <div class="col-6 d-flex flex-row">
+                <label class="col-md-6 col-sm-4 col-form-label" for="">Filter by Category:</label>
+                <div class="col-sm-9">
+                    <select (change)="getCoursesBycategory()" [(ngModel)]="selectedCategory" class="form-select">
+                        <option selected>All</option>
+                        <option *ngFor="let category of categories"  [ngValue]="category.id" >{{category.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                Export
+            </div>
+      
+    </div>
+    </div>
+</div>
+
+
+<div class="container mt-1">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th class="d-flex justify-content-between" >
+                        <span style="width: 50%;">Name</span>
+                        
+                        <!-- <button (click)="sortCustomers('name')" class="btn btn-default">
+                            <i [ngClass]="displaySort('name')"></i>
+                        </button> -->
+                        <span style="width: 50%;">Price</span>
+    
+                    </th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let course of courses">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <div class="accordion-header" [attr.id]="'heading'+course.code">
+                                <h5 class="d-flex justify-content-between accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+course.code" aria-expanded="true" [attr.aria-controls]="'collapse'+course.code">
+                                 <td style="width: 50%;"> ({{course.code}}) {{course.name}}</td> <td style="width: 50%;" class="d-flex justify-content-between ">₪ {{course.price}} 
+                                    <!-- <i class="bi bi-plus-lg"></i> -->
+                                </td>
+                            </h5> </div>
+                    
+                   
+                    <div [attr.id]="'collapse'+course.code"  class="accordion-collapse collapse show" [attr.aria-labelledby]="'heading'+course.code" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p><b>Start Date:</b> {{course.start_date|date}}</p>
+                            <p><b>Number of classes:</b> {{course.num_of_classes}}</p>
+                            <p><b>Category:</b> {{course.category}}</p>
+                            <p><b>Description:</b> {{course.description}}</p>
+                            <p><b>Lecturer:</b> {{course.first_name}} {{course.last_name}}</p>
+                            <P><a href="">See more courses by this lecturer</a></P>
+                            <button class="align-center">Register Now</button>
+    
+                        </div>
+                      </div>
+                   
+                </div>
+                </div>
+                </tr>
+            </tbody>
+        </table>  
+    </div>
+    </div>
+    
+</div>

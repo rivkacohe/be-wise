@@ -8,3 +8,23 @@ export interface lecturer {
     started_teaching: Date;
     image: string;
 }
+
+export interface course {
+    code: string;
+    name: string;
+    description: string;
+    price:number;
+    start_date: Date;
+    num_of_classes:number;
+    category:string;
+    first_name:string;
+    last_name:string;
+}
+
+export interface category{
+id:number;
+name:string;
+description: string;
+} 
+
+export type categoriesValue = category["id"]|'All'
