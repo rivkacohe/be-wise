@@ -11,8 +11,11 @@
                     </select>
                 </div>
             </div>
-            <div>
-                Export
+            <div class="p-2">
+                <button (click)="exportCoursesData()" class="btn btn-primary">
+                    <i class="bi-download pe-2"></i>
+                    Export
+                </button>
             </div>
       
     </div>
@@ -27,12 +30,19 @@
             <thead>
                 <tr>
                     <th class="d-flex justify-content-between" >
-                        <span style="width: 50%;">Name</span>
-                        
-                        <!-- <button (click)="sortCustomers('name')" class="btn btn-default">
-                            <i [ngClass]="displaySort('name')"></i>
-                        </button> -->
-                        <span style="width: 50%;">Price</span>
+                        <span style="width: 50%;">
+                            <span >Name</span>
+                            <button (click)="sortCourses('name')" class="btn btn-default">
+                                <i [ngClass]="displaySort('name')"></i>
+                              </button>
+                        </span>
+                      
+                        <span style="width: 50%;">
+                        <span >Price</span>
+                        <button (click)="sortCourses('price')" class="btn btn-default">
+                            <i [ngClass]="displaySort('price')"></i>
+                          </button>
+                        </span>
     
                     </th>
                 </tr>
@@ -42,14 +52,14 @@
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <div class="accordion-header" [attr.id]="'heading'+course.code">
-                                <h5 class="d-flex justify-content-between accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+course.code" aria-expanded="true" [attr.aria-controls]="'collapse'+course.code">
+                                <h5 class="d-flex justify-content-between accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+course.code" aria-expanded="true" [attr.aria-controls]="'collapse'+course.code">
                                  <td style="width: 50%;"> ({{course.code}}) {{course.name}}</td> <td style="width: 50%;" class="d-flex justify-content-between ">₪ {{course.price}} 
                                     <!-- <i class="bi bi-plus-lg"></i> -->
                                 </td>
                             </h5> </div>
                     
                    
-                    <div [attr.id]="'collapse'+course.code"  class="accordion-collapse collapse show" [attr.aria-labelledby]="'heading'+course.code" data-bs-parent="#accordionExample">
+                    <div [attr.id]="'collapse'+course.code"  class="accordion-collapse collapse" [attr.aria-labelledby]="'heading'+course.code" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <p><b>Start Date:</b> {{course.start_date|date}}</p>
                             <p><b>Number of classes:</b> {{course.num_of_classes}}</p>

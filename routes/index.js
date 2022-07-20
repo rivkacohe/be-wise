@@ -9,6 +9,7 @@ router.get('/lecturers', lm.getLecturers);
 router.get('/courses', lm.getCourses);
 router.get('/courses/filter', lm.getCoursesByCategories);
 router.get('/categories', lm.getCategories);
+router.get('/courses/export', lm.exportCourses);
 
 
 

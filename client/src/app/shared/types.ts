@@ -27,4 +27,16 @@ name:string;
 description: string;
 } 
 
-export type categoriesValue = category["id"]|'All'
+export type categoriesValue = category["id"]|'All';
+
+
+export type sortColumn = 'name' | 'price';
+
+export interface CourseSort {
+    column: sortColumn;
+    dirAsc: boolean;
+}
+
+export interface FilePath {
+    name: string;
+}
