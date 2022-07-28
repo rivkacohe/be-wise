@@ -5,9 +5,11 @@
       <form [formGroup]="studentRegisterForm" (ngSubmit)="onSumbit()">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Student registration form</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div  *ngIf="registerSuccess" class="modal-body w-100 justify-content-center">
+          {{studentName}} registed successfully
+        </div>
+        <div *ngIf="!registerSuccess" class="modal-body">
 
           <div class="container  h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -73,9 +75,7 @@
                             class="form-control form-control-lg" />
                           <label class="form-label" for="form3Example97">Email </label>
                         </div>
-                        <span class="successAlert" *ngIf="registerSuccess"> {{studentName}} registed successfully</span>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -85,8 +85,8 @@
 
         </div>
         <div class="modal-footer">
-          <button (click)="resetRegisterForm()" type="button" class="btn btn-light">Reset all</button>
-          <button (click)="registerSuccess = !registerSuccess" type="button" class="btn btn-secondary"
+          <button *ngIf="!registerSuccess" (click)="resetRegisterForm()" type="button" class="btn btn-light">Reset all</button>
+          <button (click)="turnSuccessToFalse()" type="button" class="btn btn-secondary"
             data-bs-dismiss="modal">Close</button>
           <button *ngIf="!registerSuccess" [disabled]="!studentRegisterForm.valid" type="submit"
             class="btn btn-primary">Register</button>
@@ -95,3 +95,4 @@
     </div>
   </div>
 </div>
+

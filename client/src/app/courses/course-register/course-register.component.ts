@@ -34,6 +34,13 @@ export class CoursCardComponent implements OnInit {
       error: (err) => console.error(err)
     })
   }
+
+  turnSuccessToFalse(){
+    setTimeout(() => {
+      this.registerSuccess = !this.registerSuccess
+    }, 500);
+
+  }
   constructor(private apiService: ApiService, public formBuilder: FormBuilder) {
     this.studentRegisterForm = this.formBuilder.group({
       first_name: new FormControl('', {
