@@ -32,7 +32,6 @@ export class CoursesComponent implements OnInit {
     this.apiService.getCoursesList().subscribe({
       next: (data: Array<course>) => { this.courses = data },
       error: (err) => console.error(err),
-      complete: () => (console.log(this.courses)),
     })
   }
 
@@ -40,7 +39,6 @@ export class CoursesComponent implements OnInit {
     this.apiService.getCategoriesList().subscribe({
       next: (data: Array<category>) => { this.categories = data },
       error: (err) => console.error(err),
-      complete: () => (console.log(this.categories)),
     })
   }
 
@@ -107,7 +105,6 @@ export class CoursesComponent implements OnInit {
     this.apiService.getFilteredCourses('lecturer_id', id).subscribe({
       next: (data: Array<course>) => { this.courses = data },
       error: (err) => console.error(err),
-      complete: () => (console.log(this.courses)),
     })
   }
   registerCourse(code: string) {
