@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoursesComponent } from './courses/courses.component';
-import { CoursCardComponent } from './course-card/cours-card.component';
+import { CoursCardComponent } from './course-register/course-register.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -13,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CoursCardComponent
   ],
   imports: [
+    BrowserModule,
     CommonModule,
     SharedModule,
     FormsModule,

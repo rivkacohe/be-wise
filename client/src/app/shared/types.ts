@@ -13,21 +13,22 @@ export interface course {
     code: string;
     name: string;
     description: string;
-    price:number;
+    price: number;
     start_date: Date;
-    num_of_classes:number;
-    category:string;
-    first_name:string;
-    last_name:string;
+    num_of_classes: number;
+    category: string;
+    lecturer_id: number;
+    first_name: string;
+    last_name: string;
 }
 
-export interface category{
-id:number;
-name:string;
-description: string;
-} 
+export interface category {
+    id: number;
+    name: string;
+    description: string;
+}
 
-export type categoriesValue = category["id"]|'All';
+export type categoriesValue = category["id"] | 'All';
 
 
 export type sortColumn = 'name' | 'price';
@@ -39,4 +40,12 @@ export interface CourseSort {
 
 export interface FilePath {
     name: string;
+}
+export interface student {
+    first_name?: string| null;
+    last_name?: string| null;
+    address?: string| null;
+    gender?: string| null;
+    course_code?: string| null;
+    email?: string | null;
 }

@@ -24,7 +24,6 @@ export class ProfileCardComponent implements OnInit {
   claculateExperience(date:Date){
     var today = new Date();
     var startedDate = new Date(date);
-    console.log(startedDate);
     
     var age = today.getFullYear() - startedDate.getFullYear();
     var m = today.getMonth() - startedDate.getMonth();

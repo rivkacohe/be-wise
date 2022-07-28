@@ -9,8 +9,8 @@ import { lecturer } from 'src/app/shared/types';
 })
 export class LecturersComponent implements OnInit {
   lecturers!: Array<lecturer>;
- 
-  
+
+
 
   constructor(private apiService: ApiService) { }
 
@@ -18,12 +18,11 @@ export class LecturersComponent implements OnInit {
     this.getLucturer();
   }
 
-  getLucturer(){
+  getLucturer() {
     this.apiService.getLecturersList().subscribe({
       next: (data: Array<lecturer>) => { this.lecturers = data },
       error: (err) => console.error(err),
-      complete: () => (console.log(this.lecturers)),
-    }) 
+    })
   }
 }
 

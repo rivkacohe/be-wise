@@ -1,0 +1,97 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="studentRegisterForm" (ngSubmit)="onSumbit()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Student registration form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="container  h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col">
+                <div class="card card-registration my-4">
+                  <div class="row g-0">
+                    <div>
+                      <div class="card-body p-md-5 text-black">
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <input formControlName="first_name" type="text" id="form3Example1m"
+                                class="form-control form-control-lg" />
+                              <label class="form-label" for="form3Example1m">First name</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <input formControlName="last_name" type="text" id="form3Example1n"
+                                class="form-control form-control-lg" />
+                              <label class="form-label" for="form3Example1n">Last name</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <input formControlName="address" type="text" id="form3Example8"
+                            class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Example8">Address</label>
+                        </div>
+
+                        <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                          <h6 class="mb-0 me-4">Gender: </h6>
+
+                          <div class="form-check form-check-inline mb-0 me-4">
+                            <input formControlName="gender" class="form-check-input" type="radio" name="gender"
+                              id="femaleGender" value="female" />
+                            <label class="form-check-label" for="femaleGender">Female</label>
+                          </div>
+
+                          <div class="form-check form-check-inline mb-0 me-4">
+                            <input formControlName="gender" class="form-check-input" type="radio" name="gender"
+                              id="maleGender" value="male" />
+                            <label class="form-check-label" for="maleGender">Male</label>
+                          </div>
+
+                          <div class="form-check form-check-inline mb-0">
+                            <input formControlName="gender" class="form-check-input" type="radio" name="gender"
+                              id="otherGender" value="other" />
+                            <label class="form-check-label" for="otherGender">Other</label>
+                          </div>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <input formControlName="course_code" type="text" id="form3Example99"
+                            class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Example99">Course</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <input formControlName="email" type="email" id="form3Example97"
+                            class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Example97">Email </label>
+                        </div>
+                        <span class="successAlert" *ngIf="registerSuccess"> {{studentName}} registed successfully</span>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="resetRegisterForm()" type="button" class="btn btn-light">Reset all</button>
+          <button (click)="registerSuccess = !registerSuccess" type="button" class="btn btn-secondary"
+            data-bs-dismiss="modal">Close</button>
+          <button *ngIf="!registerSuccess" [disabled]="!studentRegisterForm.valid" type="submit"
+            class="btn btn-primary">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,7 @@ export class CoursesComponent implements OnInit {
   categories!: Array<category>;
   selectedCategory: categoriesValue = 'All';
   tableSort!: CourseSort;
-
+  course_code!: string;
 
   constructor(private apiService: ApiService) { }
 
@@ -46,13 +46,11 @@ export class CoursesComponent implements OnInit {
 
   getCoursesBycategory() {
 
-    console.log((this.selectedCategory));
-
     if (this.selectedCategory === 'All') {
       this.getCourse();
       return;
     }
-    this.apiService.getCoursesByCategory(this.selectedCategory).subscribe({
+    this.apiService.getFilteredCourses('category', this.selectedCategory).subscribe({
       next: (data: Array<course>) => { this.courses = data },
       error: (err) => console.error(err),
       complete: () => (console.log(this.courses)),
@@ -83,22 +81,37 @@ export class CoursesComponent implements OnInit {
     }
     return 'bi-chevron-expand';
   }
+
   exportCoursesData() {
+
     if (this.selectedCategory === 'All') {
       this.apiService.exportCourses().subscribe({
         next: (data: FilePath) => {
           window.open(`${environment.serverUrl}/${data.name}`);
-      },
-      error: (err) => console.error(err),
+        },
+        error: (err) => console.error(err),
       })
       return;
     }
-    this.apiService.exportCoursesByCategory(this.selectedCategory).subscribe({
+
+    this.apiService.exportFilteredCourses('category', this.selectedCategory).subscribe({
       next: (data: FilePath) => {
         window.open(`${environment.serverUrl}/${data.name}`);
-    },
-    error: (err) => console.error(err),
+      },
+      error: (err) => console.error(err),
     })
 
   }
+  coursesByLecturer(id: number) {
+
+    this.apiService.getFilteredCourses('lecturer_id', id).subscribe({
+      next: (data: Array<course>) => { this.courses = data },
+      error: (err) => console.error(err),
+      complete: () => (console.log(this.courses)),
+    })
+  }
+  registerCourse(code: string) {
+    this.course_code = code;
+  }
+
 }
