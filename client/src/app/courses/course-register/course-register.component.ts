@@ -37,7 +37,7 @@ export class CoursCardComponent implements OnInit {
 
   turnSuccessToFalse(){
     setTimeout(() => {
-      this.registerSuccess = !this.registerSuccess
+      this.registerSuccess = false;
     }, 500);
 
   }
